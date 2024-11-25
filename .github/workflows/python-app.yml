@@ -16,7 +16,10 @@ jobs:
   #NAME OF THE JOBS
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest,macOs-latest]
 
     steps:
     - uses: actions/checkout@v4 #checkout the repo
@@ -41,3 +44,6 @@ jobs:
     - name: Verify Fastapi app starts
       run: |
         python -c "from main import app;print('Fastapi app loaded successfully')"
+
+  publish:
+    needs: build
