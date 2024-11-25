@@ -45,5 +45,5 @@ jobs:
       run: |
         python -c "from main import app;print('Fastapi app loaded successfully')"
 
-  publish:
-    needs: build
+  # publish:
+  #   needs: build
